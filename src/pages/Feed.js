@@ -43,12 +43,14 @@ const content = [
   {
     id: 1,
     name: "abdul_h",
-    comment: "Nice Place"
+    comment: "Nice Place",
+    image: "/icons/abdul.png"
   },
   {
     id: 2,
     name: "egi_lol",
-    comment: "Good Vibe"
+    comment: "Good Vibe",
+    image: "/images/egi.png"
   }
 ]
 

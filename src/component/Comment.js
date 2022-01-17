@@ -18,7 +18,7 @@ function Notification(props) {
             <Dropdown.Item href="#/action-1" className={style.dropdownItem}>
               <div className={style.dropdownItem2}>
                 <div style={{display: "flex"}}>
-                  <Image src="/icons/abdul.png"
+                  <Image src={content.image}
                   style={{margin: "0px"}} 
                   />
                   <span style={{color: "#FFFFFF", marginLeft: "15px"}}>{content.name}</span>
