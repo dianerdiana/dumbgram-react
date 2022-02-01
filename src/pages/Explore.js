@@ -1,8 +1,8 @@
-import { Container, Row, Col, Button, Image } from "react-bootstrap"
-import style from "../modules/Explore.module.css"
+import { Container, Row, Col } from "react-bootstrap"
 import Masonry from "react-masonry-css"
-import FeedCard from "../component/FeedCard.js"
-import ExploreCard from "../component/ExploreCard"
+import ExploreCard from "../components/ExploreCard"
+import ProExplore from "../components/proExplore/ProExplore"
+import Navbar from "../components/navbar/Navbar"
 
 const assets = [
   {
@@ -37,6 +37,21 @@ const assets = [
   }
 ]
 
+const content = [
+  {
+    id: 1,
+    name: "abdul_h",
+    comment: "Nice Place",
+    image: "/icons/abdul.png"
+  },
+  {
+    id: 2,
+    name: "egi_lol",
+    comment: "Good Vibe",
+    image: "/images/egi.png"
+  }
+]
+
 function Explore() {
   return (
     <Container fluid style={{height: "95vh" }}>
@@ -45,66 +60,7 @@ function Explore() {
 
           {/* profile side (left side) */}
 
-          <Row className={style.leftFeed}>
-            <Col>
-            <Col style={{paddingLeft: "0", height: "80px"}}>
-              <Image src="/icons/DumbGramGroup.svg" className={style.appTitle}/>
-            </Col>
-              <Row className={style.feedProfile}>
-                <div className={style.editBtn}>
-                  <a href="#" >
-                    <Image src="/icons/edit-icon.svg" className={style.editBtnIcon}/>
-                  </a>
-                </div>
-                <div className={style.profileImageWrap} mb={5}>
-                  <Image src="/images/Rectangle-6.png" className={style.profileImage} />
-                </div>
-                <div className={style.profileNameUser} mb={5}>
-                  <h5 className={style.profileName}>Lisa</h5>
-                  <p className={style.profileUserName}>@lalalisa_m</p>
-                </div>
-                <div className={style.profileState}>
-                  <div className={style.profilePost}>
-                    <span className={style.stateTitle}>Posts</span>
-                    <span className={style.stateValue}>200</span>
-                  </div>
-                  <div className={style.profileFollowers}>
-                    <span className={style.stateTitle}>Followers</span>
-                    <span className={style.stateValue}>51.2 M</span>
-                  </div>
-                  <div className={style.profileFollow}>
-                    <span className={style.stateTitle}>Following</span>
-                    <span className={style.stateValue}>1</span>
-                  </div>
-                </div>
-                <div className={style.profileDesc}>
-                  <span className={style.profileDescText}>Rapper in Black Pink, Brand Ambasador Penshoppe</span>
-                </div>
-              </Row>
-              <Row className={style.linkFeedExplore}>
-                <Col className={style.linkFeed}>
-                  <a href="#">
-                    <Image src="/icons/home-unactive.svg"/>
-                    <span>Feed</span>
-                  </a>
-                </Col>
-                <Col className={style.linkExplore}>
-                  <a href="#">
-                    <Image src="/icons/explore-active.svg"/>
-                    <span>Explore</span>
-                  </a>
-                </Col>
-              </Row>
-              <Row style={{ paddingTop: "15px"}}>
-                <Col className={style.btnGroup}>
-                  <a href="#" className={style.btnLogout}>
-                    <Image src="/icons/logout-icon.svg"/>
-                    <span>Logout</span>
-                  </a>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+          <ProExplore />
 
         </Col>
 
@@ -119,47 +75,28 @@ function Explore() {
           {/* feed image (right side) */}
         <Col md="8" style={{marginLeft: "80px"}}>
 
-          <Row className={style.rightSide}>
+          <Row className="right-side">
 
             {/* NavBar Head */}
 
-            <Col className={style.feedHeader}>
-              <div className={style.headerLeft}>
-                <label htmlFor="search">
-                  <Image src="/icons/search-icon.svg"/>
-                </label>
-                <input type="text" placeholder="Search"/>
-              </div>
-              <div className={style.headerRight}>
-                <a href="#" style={{marginRight: "20px"}}>
-                  <Image src="/icons/notif-icon.svg"/>
-                </a>
-                <a href="#" style={{marginRight: "20px"}}>
-                  <Image src="/icons/paper-plane.svg"/>
-                </a>
-                <Button>
-                  <Image src="/icons/plus-icon.svg"/>
-                  Create Post
-                </Button>
-              </div>
-            </Col>
+            <Navbar content={content}/>
 
-            <Col className={style.feedTitle}>
+            <Col className="right-title">
               <h3>Explore</h3>
             </Col>
 
-            <Row className={style.feedContent}>
+            <div className="right-content">
               <Masonry
               breakpointCols={3}
-              className={style.myMasonryGrid}
-              columnClassName={style.myMasonryGridColumn}>
-                {assets.map((item, id) => {
+              className="my-masonry-grid"
+              columnClassName="my-masonry-grid-column">
+                {assets.map((item) => {
                   return(
-                    <ExploreCard item={item}></ExploreCard>
+                    <ExploreCard item={item} key={assets.image}></ExploreCard>
                   )
                 })}
               </Masonry>
-            </Row>
+            </div>
           </Row>
 
         </Col>
